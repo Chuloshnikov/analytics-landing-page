@@ -1,26 +1,30 @@
 /*Basic style*/
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background: #fff
-  }
-  
-  .container {
-    @include min-max(320px, 100%);
-  }
-  
-  .wrap {
-    @include min-max(320px, 1180px);
-  }
-  
-  p,
-  a,
-  button {
-    color: #000;
-  }
-  
-  img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-  }
+  font-family: 'Roboto', sans-serif;
+  background: $light-gray;
+}
+
+.container {
+  @include min-max(320px, 100%);
+}
+
+.wrap {
+  @include min-max(320px, 1180px);
+}
+
+.img__normalize {
+  @include img;
+}
+
+p,
+a,
+button {
+  color: $gray;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
