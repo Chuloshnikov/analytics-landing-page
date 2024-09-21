@@ -95,6 +95,11 @@ img {
   height: auto;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 .intro-analytics {
   padding-top: 50px;
   position: relative;
@@ -118,7 +123,7 @@ img {
   z-index: -1;
   left: 0;
   right: 0;
-  bottom: -47px;
+  bottom: -17px;
   width: 100%;
   height: 100%;
   background: #ef2a82;
@@ -129,13 +134,16 @@ img {
   display: flex;
   align-items: center;
 }
+.header .header-menu-btn {
+  display: none;
+}
 .header nav {
   flex-grow: 1;
 }
 .header__logo {
   display: flex;
   align-items: center;
-  margin-right: 80px;
+  margin-right: 78px;
   text-decoration: none;
 }
 .header__logo img {
@@ -143,6 +151,7 @@ img {
 }
 .header__logo p {
   font-size: 20px;
+  text-transform: uppercase;
   color: #fff;
   font-weight: 600;
 }
@@ -157,10 +166,10 @@ img {
   text-decoration: none;
 }
 
-.header__btn {
-  cursor: pointer;
+.header__btns {
+  z-index: 2;
 }
-.header__btn--transparent {
+.header__btns .header__btn--transparent {
   border: 1px solid transparent;
   background-color: transparent;
   border-radius: 68px;
@@ -169,7 +178,7 @@ img {
   padding: 10px 53px;
   cursor: pointer;
 }
-.header__btn--circled {
+.header__btns .header__btn--circled {
   border: 1px solid #f8f9ff;
   background-color: transparent;
   border-radius: 68px;
@@ -188,8 +197,7 @@ img {
   max-width: 550px;
   margin-right: 80px;
 }
-.dashboard__info-title {
-  z-index: 1;
+.dashboard__title {
   position: relative;
   font-weight: 700;
   font-size: 50px;
@@ -197,7 +205,7 @@ img {
   color: #fff;
   margin-bottom: 15px;
 }
-.dashboard__info-title::after {
+.dashboard__title::after {
   content: "";
   position: absolute;
   top: -450px;
@@ -207,7 +215,7 @@ img {
   background: url("../../assets/icons/logo-light-gray-2.svg") no-repeat;
   z-index: -1;
 }
-.dashboard__info-title::before {
+.dashboard__title::before {
   content: "";
   position: absolute;
   top: -345px;
@@ -217,14 +225,14 @@ img {
   background: url("../../assets/icons/logo-light-gray.svg") no-repeat;
   z-index: -1;
 }
-.dashboard__info-text {
+.dashboard__text {
   font-weight: 400;
   font-size: 18px;
   line-height: 150%;
   color: #8794ba;
   margin-bottom: 50px;
 }
-.dashboard__info-btn {
+.dashboard__btn {
   border: 1px solid transparent;
   background-color: #ef2a82;
   border-radius: 68px;
@@ -234,7 +242,7 @@ img {
   cursor: pointer;
   transition: all 0.5s;
 }
-.dashboard__info-btn:hover {
+.dashboard__btn:hover {
   border: 1px solid #ef2a82;
   background-color: transparent;
   border-radius: 68px;
@@ -257,7 +265,7 @@ img {
   position: absolute;
   top: -80px;
   left: 80px;
-  background: url("../../assets/img/dashboard-big.png");
+  background: url("../../assets/img/dashboard-big.png") no-repeat;
   width: 805px;
   height: 550px;
   box-shadow: 0 18px 50px -15px rgba(25, 42, 89, 0.2);
@@ -265,6 +273,137 @@ img {
   z-index: -1;
 }
 
+@media screen and (max-width: 1200px) {
+  .intro-analytics::after, .intro-analytics::before {
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+  }
+  .wrap-padding {
+    padding: 0 15px;
+  }
+  .header {
+    justify-content: space-between;
+  }
+  .header__logo {
+    flex-grow: 1;
+  }
+  .header .header-menu-btn {
+    display: block;
+    position: relative;
+  }
+  .header .header-menu-btn input {
+    cursor: pointer;
+    position: relative;
+    visibility: hidden;
+    width: 24px;
+    height: 24px;
+  }
+  .header .header-menu-btn input:checked ~ .header__menu--side {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .header .header-menu-btn input::before {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 0;
+    left: 0;
+    visibility: visible;
+    background: url("../../assets/icons/menu-icon.svg") no-repeat;
+  }
+  .header__menu--side {
+    position: absolute;
+    z-index: 2;
+    top: 40px;
+    right: -15px;
+    background: #1e3681;
+    padding: 15px 20px;
+    border-radius: 5px;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.5s;
+  }
+  .header__menu--side ul {
+    flex-direction: column;
+  }
+  .header__menu--side ul li {
+    margin-bottom: 30px;
+  }
+  .header__menu--side ul li:last-child {
+    margin: 0;
+  }
+  .header__menu--adaptive {
+    display: none;
+  }
+  .header__btn--adaptive {
+    display: none;
+  }
+  .dashboard {
+    padding-top: 80px;
+    flex-direction: column;
+  }
+  .dashboard__info {
+    max-width: 100%;
+    margin-right: 0;
+  }
+  .dashboard__title {
+    text-align: center;
+  }
+  .dashboard__title::before {
+    display: none;
+  }
+  .dashboard__title::after {
+    display: none;
+  }
+  .dashboard__btn {
+    margin: 0 auto;
+    display: block;
+  }
+  .dashboard__pictures {
+    margin: 0 auto;
+  }
+  .dashboard__pictures::before {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    width: 520px;
+    height: 359px;
+  }
+  .dashboard__text {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 576px) {
+  .intro-analytics::after, .intro-analytics::before {
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+  }
+  .intro-analytics .header {
+    flex-direction: row;
+    gap: 5px;
+  }
+  .intro-analytics .header .header__btn--transparent {
+    padding: 10px 5px;
+  }
+  .intro-analytics .header__logo {
+    margin-right: 0;
+  }
+  .intro-analytics .header .header-menu-btn input:checked ~ .header__menu--side {
+    transform: translateX(30%);
+  }
+  .dashboard {
+    padding-top: 40px;
+    padding-bottom: 150px;
+  }
+  .dashboard__title {
+    font-size: 36px;
+  }
+  .dashboard__text {
+    font-size: 16px;
+  }
+  .dashboard__pictures::before {
+    display: none;
+  }
+}
 .main-features {
   margin-bottom: 130px;
 }
@@ -366,6 +505,29 @@ img {
   box-shadow: 0 18px 50px -15px rgba(25, 42, 89, 0.2);
 }
 
+@media screen and (max-width: 1200px) {
+  .roadmap__item {
+    gap: 20px;
+  }
+  .roadmap__description {
+    min-width: 50%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .roadmap__item {
+    flex-direction: column;
+    margin-bottom: 90px;
+  }
+  .roadmap__description {
+    min-width: 50%;
+  }
+  .roadmap__title {
+    font-size: 32px;
+  }
+  .roadmap__text-block {
+    font-size: 16px;
+  }
+}
 .pricing-plans {
   position: relative;
   padding-top: 280px;
@@ -554,7 +716,6 @@ img {
     padding: 30px 36px 30px;
   }
 }
-
 .footer-menu {
   background: #172755;
 }
